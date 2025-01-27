@@ -14,9 +14,9 @@ library(datasauRus)
 
 ### Exercise 1
 
-*In this Exercise, the dino_data has:*
+*In this Exercise, the datasauRus has:*
 
--   142 rows,
+-   1846 rows,
 -   3 columns **(including dataset, x, and y values)**
     -   *dataset:* this column shows where the entries are form.
     -   *x:* it represents x values.
@@ -62,7 +62,7 @@ star_data %>%
 
 *Answer:* **r = -0.0630**
 
-> **Comparison**
+> **Comparison** **the difference value between *r_star* and *r_dino.***
 
 | **r_star** | **r_dino** | **The difference**                                 |
 |------------|------------|----------------------------------------------------|
@@ -79,11 +79,46 @@ ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-```{r}
+*Next step is check for unique values in the data columns. When filter the "circle", a star was shown accidentally.*
 
+*Note:* It can be fixed after pasting code from Exercise 3 to Exercise 4 by editing the argument data = star_data in lieu of circle_data.
 
+```{r check variable-uniques}
+unique_values <- unique(dino_data$dataset)
+
+#Print the unique values
+print(unique_values)
 ```
 
-### Exercise 5
+*Then, calculate the correlation between x and y in the data set:*
 
-(Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+```{r cor-circle}
+circle_data %>% 
+  summarise(r_circle = cor(x,y))
+```
+
+*Answer:* **r_circle = -0.0683**
+
+> **Comparison *the diffrence between r_circle and r_dino***
+
+> | **r_cirle** | **r_dino** | **The difference**                          |
+> |-------------|------------|---------------------------------------------|
+> | -0.0683     | -0.0645    | *circle is 0.0038 lower than that of dino.* |
+
+> ### Exercise 5
+
+*Final step: Plot all data st at once.*
+
+```{r plot-faucet}
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) + geom_point()+ 
+  facet_wrap(~ dataset, ncol = 3) +
+  theme(legend.position = "none")
+```
+
+*After that, utilize the 'group_by' function to generate all the summary of correlation coefficients.*
+
+```{r cor-summary}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarise(r = cor(x, y))
+```
