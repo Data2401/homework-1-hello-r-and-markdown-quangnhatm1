@@ -1,8 +1,9 @@
 ---
 title: "Hello R"
 author: "Quang Le"
-date: "DATA 2401 - `r format(Sys.time(), '%d %B, %Y'`"
+date: 2/12/2025
 output: html_document
+
 ---
 
 ### Load packages
@@ -65,7 +66,7 @@ star_data %>%
 > **Comparison** **the difference value between *r_star* and *r_dino.***
 
 | **r_star** | **r_dino** | **The difference**                                 |
-|------------|------------|----------------------------------------------------|
+|--------------|--------------|--------------------------------------------|
 | *-0.063*   | *-0.0645*  | *star data is .0015 higher than that of dino data* |
 
 ### Exercise 4
