@@ -1,7 +1,7 @@
 ---
 title: "Hello R"
-author: "Quang Le"
-date: 2/12/2025
+author: "Quang Le - DATA 2401"
+date: 2/12/2025 
 output: html_document
 
 ---
